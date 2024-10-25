@@ -29,25 +29,25 @@ static std::optional<T> parsePrimitiveMember(const rapidjson::Value& parent, con
 
 
 
-// VerbConjModel readMetadata(const std::string& metadataPath) {
-//     std::ifstream ifs(metadataPath);
-//     if (!ifs.is_open()) {
-//         throw std::runtime_error("File does not exist: " + metadataPath);
-//     }
+VerbConjModel readMetadata(const std::string& metadataPath) {
+    std::ifstream ifs(metadataPath);
+    if (!ifs.is_open()) {
+        throw std::runtime_error("File does not exist: " + metadataPath);
+    }
 
-//     rapidjson::IStreamWrapper isw(ifs);
-//     rapidjson::Document jsonSidecar;
-//     jsonSidecar.ParseStream(isw);
-//     if (!jsonSidecar.IsObject()) {
-//         throw std::runtime_error("Syntax error in file: " + metadataPath);
-//     }
+    rapidjson::IStreamWrapper isw(ifs);
+    rapidjson::Document jsonSidecar;
+    jsonSidecar.ParseStream(isw);
+    if (!jsonSidecar.IsObject()) {
+        throw std::runtime_error("Syntax error in file: " + metadataPath);
+    }
 
-//     VerbConjModel model;
+    VerbConjModel model;
 
-//     // Parsing file object
-//     rapidjson::Value::ConstMemberIterator itr = jsonSidecar.FindMember("file");
-//     if (itr != jsonSidecar.MemberEnd() && itr->value.IsObject()) {
-//         const rapidjson::Value& jsonFile = itr->value;
-//     }
-//     return model;
-// }
+    // Parsing file object
+    rapidjson::Value::ConstMemberIterator itr = jsonSidecar.FindMember("file");
+    if (itr != jsonSidecar.MemberEnd() && itr->value.IsObject()) {
+        const rapidjson::Value& jsonFile = itr->value;
+    }
+    return model;
+}

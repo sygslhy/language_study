@@ -17,15 +17,13 @@ set(PUBLIC_HDRS ${PUBLIC_HDR_DIR}/model/VerbConjModel.h
 set(PRIVATE_HDRS)
 
 # sources dependencies
-set(SRCS ${SRC_DIR}/VerbConjModel.cpp)
 
 # we're building a library
-add_library(${TARGET} STATIC ${PRIVATE_HDRS} ${PUBLIC_HDRS} ${SRCS})
+add_library(${TARGET} INTERFACE ${PRIVATE_HDRS} ${PUBLIC_HDRS} ${SRCS})
 
 # specify where the public headers of this library are
 target_include_directories(
     ${TARGET}
-    PUBLIC ${PUBLIC_HDR_DIR}
-    PRIVATE ${PRIVATE_HDR_DIR}
+    INTERFACE ${PUBLIC_HDR_DIR} ${PRIVATE_HDR_DIR}
 )
 
